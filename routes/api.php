@@ -13,8 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('api')->get('/cars','CarController@index');
-
-Route::middleware('api')->post('/cars','CarController@store');
-
-Route::middleware('api')->get('/cars/{id}','CarController@show');
+Route::resource('cars', 'CarController');

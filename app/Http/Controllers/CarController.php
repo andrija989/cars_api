@@ -35,6 +35,16 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate(request(),[
+            'brand' => 'required|min:2',  
+            'model' => 'required|min:2',
+            'year' => 'required|integer',
+            'maxSpeed' => 'required|between:20,300',
+            'isAutomatc' => 'required',
+            'engine' => 'required',
+            'numberOfDoors' => 'required|between:2,5'
+            ]);
+        
         $car = new Car();
         $car->brand = $request->input('brand');
         $car->model = $request->input('model');
@@ -68,17 +78,7 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        $car = Car::findOrFail($id);
-        $car->brand = $request->input('brand');
-        $car->model = $request->input('model');
-        $car->year = $request->input('year');
-        $car->maxSpeed = $request->input('maxSpeed');
-        $car->isAutomatc = $request->input('isAutomatc');
-        $car->engine = $request->input('engine');
-        $car->numberOfDoors = $request->input('numberOfDoors');
-
-        $car->save();
-        return $car;
+        
     }
 
     /**
@@ -90,7 +90,27 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(),[
+            'brand' => 'required|min:2',  
+            'model' => 'required|min:2',
+            'year' => 'required|integer',
+            'maxSpeed' => 'required|between:20,300',
+            'isAutomatc' => 'required',
+            'engine' => 'required',
+            'numberOfDoors' => 'required|between:2,5'
+            ]);
+
+        $car = new Car();
+        $car->brand = $request->input('brand');
+        $car->model = $request->input('model');
+        $car->year = $request->input('year');
+        $car->maxSpeed = $request->input('maxSpeed');
+        $car->isAutomatc = $request->input('isAutomatc');
+        $car->engine = $request->input('engine');
+        $car->numberOfDoors = $request->input('numberOfDoors');
+
+        $car->save();
+        return $car;
     }
 
     /**
