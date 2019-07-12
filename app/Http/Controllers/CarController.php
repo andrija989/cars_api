@@ -43,10 +43,10 @@ class CarController extends Controller
             'brand' => 'required|min:2',  
             'model' => 'required|min:2',
             'year' => 'required|integer',
-            'maxSpeed' => 'required|between:20,300',
-            'isAutomatc' => 'required',
+            'maxSpeed' => 'required|between:20,300|integer',
+            'isAutomatic' => 'required',
             'engine' => 'required',
-            'numberOfDoors' => 'required|between:2,5'
+            'numberOfDoors' => 'required|between:2,5|integer'
             ]);
         
         $car = new Car();
@@ -54,7 +54,7 @@ class CarController extends Controller
         $car->model = $request->input('model');
         $car->year = $request->input('year');
         $car->maxSpeed = $request->input('maxSpeed');
-        $car->isAutomatc = $request->input('isAutomatc');
+        $car->isAutomatic = $request->input('isAutomatic');
         $car->engine = $request->input('engine');
         $car->numberOfDoors = $request->input('numberOfDoors');
 
